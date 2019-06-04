@@ -1,5 +1,10 @@
 def checkio(number: int) -> int:
-    return 1
+    count = 0
+    while number > 0:
+        if number % 2 == 1:
+            count += 1
+        number //= 2
+    return count
 
 #These "asserts" using only for self-checking and not necessary for auto-testing
 if __name__ == '__main__':

@@ -1,5 +1,43 @@
+class StateLamp:
+    def show(self, context):
+        pass
+
+
+class GreenLamp(StateLamp):
+    def show(self, context):
+        context.set_state(RedLamp())
+        return 'Green'
+
+
+class RedLamp(StateLamp):
+    def show(self, context):
+        context.set_state(BlueLamp())
+        return 'Red'
+
+
+class BlueLamp(StateLamp):
+    def show(self, context):
+        context.set_state(YellowLamp())
+        return 'Blue'
+
+
+class YellowLamp(StateLamp):
+    def show(self, context):
+        context.set_state(GreenLamp())
+        return 'Yellow'
+
+
 class Lamp:
-    pass
+
+    def __init__(self):
+        self.stateLamp = GreenLamp()
+
+    def set_state(self, newState):
+        self.stateLamp = newState
+
+    def light(self):
+        return self.stateLamp.show(self)
+
 
 if __name__ == '__main__':
     #These "asserts" using only for self-checking and not necessary for auto-testing

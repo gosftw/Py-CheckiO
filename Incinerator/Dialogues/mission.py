@@ -4,10 +4,14 @@ class Chat:
     pass
 
 class Human:
-    pass
+
+    def __init__(self, name):
+        self.name = name
 
 class Robot:
-    pass
+
+    def __init__(self, name):
+        self.name = name
 
 
 if __name__ == '__main__':

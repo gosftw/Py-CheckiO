@@ -9,12 +9,17 @@ MORSE = {'.-':    'a', '-...':  'b', '-.-.':  'c',
          '-.--':  'y', '--..':  'z', '-----': '0',
          '.----': '1', '..---': '2', '...--': '3',
          '....-': '4', '.....': '5', '-....': '6',
-         '--...': '7', '---..': '8', '----.': '9'
+         '--...': '7', '---..': '8', '----.': '9',
+         'x': ' '
         }
 
 def morse_decoder(code):
-    #replace this for solution
-    return code
+    code = code.replace('   ', ' x ')
+    codes = code.split(' ')
+    result = ''
+    for c in codes:
+        result += MORSE[c]
+    return result.capitalize()
 
 if __name__ == '__main__':
     print("Example:")

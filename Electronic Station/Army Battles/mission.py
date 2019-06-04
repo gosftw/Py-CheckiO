@@ -1,4 +1,36 @@
 # Taken from mission The Warriors
+class Army:
+    def __init__(self):
+        self.army = []
+        self.alive_pos = 0
+
+    def add_units(self, cls, count):
+        for _ in range(count):
+            self.army.append(cls())
+
+    @property
+    def have_alive(self):
+        return self.alive_pos < len(self.army)
+
+class Battle:
+
+    def fight(self, army_A, army_B):
+        turn = True
+        while army_A.have_alive and army_B.have_alive:
+            if turn:
+                army_B.army[army_B.alive_pos].health -= army_A.army[army_A.alive_pos].attack
+                if not army_B.army[army_B.alive_pos].is_alive:
+                    army_B.alive_pos += 1
+            else:
+                army_A.army[army_A.alive_pos].health -= army_B.army[army_B.alive_pos].attack
+                if not army_A.army[army_A.alive_pos].is_alive:
+                    army_A.alive_pos += 1
+            turn = not turn
+        if army_A.have_alive:
+            return True
+        else:
+            return False
+
 
 class Warrior:
     def __init__(self):
